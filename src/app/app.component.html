@@ -34,23 +34,37 @@
     </nav>
   </header>
   <div class="flex flex-col gap-2">
-    <div
-      class="mx-auto size-48 rounded-full border-2 border-white bg-stone-50 shadow"
-    ></div>
-    <h1 class="text-center text-4xl">Saksit Sirisakda</h1>
-    <div class="flex items-center justify-center gap-1">
-      <div class="w-4 border-t"></div>
-      <p class="text-center text-lg">Full Stack Web Developer</p>
-      <div class="w-4 border-t"></div>
+    <div class="flex flex-col justify-center h-dvh min-h-72 gap-2">
+      <h1 class="text-center text-4xl">Saksit Sirisakda</h1>
+      <div class="flex items-center justify-center gap-1">
+        <div class="w-4 border-t"></div>
+        <p class="text-center text-lg">Full Stack Web Developer</p>
+        <div class="w-4 border-t"></div>
+      </div>
     </div>
-    <div class="mx-auto w-full max-w-sm rounded-2xl bg-stone-100 p-4">
+    <!-- <div class="mx-auto w-full max-w-sm rounded-2xl bg-stone-100 p-4">
       <p class="block text-center">To be a good person.</p>
-    </div>
+    </div> -->
     <div>
-      <h3 class="mb-2 text-2xl font-semibold">Skills</h3>
-      <div class="flex gap-4">
-        @for (tech of techs; track $index) {
-          <app-technology [name]="tech" [mastery]="$index < 3" />
+      <h3 class="text-2xl font-semibold">Skills</h3>
+      <div class="flex flex-col gap-8">
+        @for (skill of skillTechs; track $index) {
+          <div class="flex flex-col gap-4">
+            <div class="flex justify-center items-center gap-4">
+              <div class="w-10 border-t border-stone-300"></div>
+              <h4 class="text-xl font-medium">{{ skill.name }}</h4>
+              <div class="w-10 border-t border-stone-300"></div>
+            </div>
+            <div class="flex gap-4 justify-center flex-wrap">
+              @for (tech of skill.techs; track $index) {
+                <app-technology
+                  [name]="tech.name"
+                  [image]="tech.image"
+                  [mastery]="tech.mastery"
+                />
+              }
+            </div>
+          </div>
         }
       </div>
     </div>

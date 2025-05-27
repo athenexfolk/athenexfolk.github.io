@@ -1,4 +1,13 @@
-<div class="text-center">
-  <div [class]="`h-24 min-w-24 rounded bg-stone-50 ${mastery() ? 'border-2 border-yellow-500' : ''}`"></div>
+<div class="flex flex-col items-center gap-2 aspect-square">
+  <div class="p-2 relative">
+    <img
+      [src]="image()"
+      [alt]="name()"
+      class="size-16 object-contain object-center"
+    />
+    @if (mastery()) {
+      <app-master-badge class="absolute -top-2 -right-2 text-[#FFD700]" />
+    }
+  </div>
   {{ name() }}
 </div>
